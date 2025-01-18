@@ -113,6 +113,9 @@ struct RecipeListView: View {
               }
             }
           }
+          Divider()
+            .padding(.top, .spacing8)
+            .padding(.trailing, .spacing16)
         }
         .padding([.leading, .top])
       }
