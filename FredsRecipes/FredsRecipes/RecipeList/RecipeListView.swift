@@ -101,7 +101,7 @@ struct RecipeListView: View {
   }
   
   var loadedView: some View {
-    VStack {
+    VStack(spacing: .zero) {
       ForEach(viewModel.sections, id: \.cuisine) { section in
         LazyVStack(alignment: .leading, spacing: .zero) {
           Text(section.cuisine)
