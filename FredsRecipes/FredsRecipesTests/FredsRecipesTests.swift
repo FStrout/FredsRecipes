@@ -5,32 +5,60 @@
 //  Created by Fred Strout on 1/16/25.
 //
 
-import XCTest
+import Testing
 @testable import FredsRecipes
 
-final class FredsRecipesTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+struct RecipeListViewModelTests {
+  let viewModel = RecipeListViewModel()
+  
+  @Test func initialState() async throws {
+    
+    // expect
+    #expect(!viewModel.displayEndpointButtons)
+    #expect(viewModel.sections.isEmpty)
+    #expect(viewModel.viewStatus == .loading)
+  }
+  
+  @Test func toggleEndpointButtons() async throws {
+    // engage
+    viewModel.toggleEndpointButtons()
+    // expect
+    #expect(viewModel.displayEndpointButtons)
+    
+    // engage again
+    viewModel.toggleEndpointButtons()
+    // expect again
+    #expect(!viewModel.displayEndpointButtons)
+  }
+  
+  @Test func loadContentRecipes() async throws {
+    // engage
+    viewModel.loadContent(endpoint: .recipes)
+    // chill
+    while viewModel.viewStatus == .loading {}
+    //expect
+    #expect(viewModel.viewStatus == .loaded)
+    #expect(!viewModel.sections.isEmpty)
+  }
+  
+  @Test func loadContentEmpty() async throws {
+    // engage
+    viewModel.loadContent(endpoint: .empty)
+    // chill
+    while viewModel.viewStatus == .loading {}
+    // expect
+    #expect(viewModel.viewStatus == .loaded)
+    #expect(viewModel.sections.isEmpty)
+  }
+  
+  @Test func loadContentError() async throws {
+    // engage
+    viewModel.loadContent(endpoint: .malformed)
+    // chill
+    while viewModel.viewStatus == .loading {}
+    // expect
+    #expect(viewModel.viewStatus == .error)
+    #expect(viewModel.sections.isEmpty)
+  }
 }
+

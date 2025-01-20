@@ -9,9 +9,9 @@ import SwiftUI
 
 final class RecipeListViewModel: ObservableObject {
   
+  @Published var displayEndpointButtons: Bool = false
   @Published var sections: [Cuisine] = []
   @Published var viewStatus: ViewStatus = .loading
-  @Published var displayEndpointButtons: Bool = false
   
   var endpoint: Endpoint = .recipes
   
