@@ -58,6 +58,7 @@ final class RecipeListViewModel: ObservableObject {
       }
     } catch {
       await MainActor.run {
+        self.sections.removeAll()
         self.viewStatus = .error
       }
     }
