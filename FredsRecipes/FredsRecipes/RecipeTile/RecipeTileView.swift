@@ -76,6 +76,6 @@ struct RecipeTileView: View {
 
 #if DEBUG
 #Preview {
-  RecipeTileView(recipe: .canvasRecipe)
+  RecipeTileView(recipe: .testRecipeBasic)
 }
 #endif
