@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "CF86BFDE-DD7A-4829-AE87-72B5CF3D1050",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:FredsRecipes.xcodeproj",
+      "identifier" : "F31BD6E32D3989F000FE2ECD",
+      "name" : "FredsRecipes"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:FredsRecipes.xcodeproj",
+        "identifier" : "F31BD6F32D3989F200FE2ECD",
+        "name" : "FredsRecipesTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:FredsRecipes.xcodeproj",
+        "identifier" : "F31BD6FD2D3989F200FE2ECD",
+        "name" : "FredsRecipesUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
