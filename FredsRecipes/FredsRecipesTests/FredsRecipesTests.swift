@@ -62,3 +62,40 @@ struct RecipeListViewModelTests {
   }
 }
 
+struct RecipeTileTests {
+  @Test func initialState() async throws {
+    // setup
+    let viewModel = RecipeTileViewModel(recipe: .testRecipeBasic)
+    // evaluate
+    #expect(!viewModel.hasSource)
+    #expect(!viewModel.hasYoutube)
+    #expect(viewModel.name == "Morpheus's Slop")
+  }
+  
+  @Test func hasSourceAndHasYoutube() async throws {
+    // setup
+    let viewModel = RecipeTileViewModel(recipe: .testRecipeWithSourceAndYouTube)
+    // evaluate
+    #expect(viewModel.hasSource)
+    #expect(viewModel.hasYoutube)
+    #expect(viewModel.name == "Both")
+  }
+  
+  @Test func hasSourceAndNoYoutube() async throws {
+    // setup
+    let viewModel = RecipeTileViewModel(recipe: .testRecipeWithSource)
+    // evaluate
+    #expect(viewModel.hasSource)
+    #expect(!viewModel.hasYoutube)
+    #expect(viewModel.name == "Source")
+  }
+  
+  @Test func hasYoutubeAndNoSource() async throws {
+    // setup
+    let viewModel = RecipeTileViewModel(recipe: .testRecipeWithYouTube)
+    // evaluate
+    #expect(!viewModel.hasSource)
+    #expect(viewModel.hasYoutube)
+    #expect(viewModel.name == "Youtube")
+  }
+}

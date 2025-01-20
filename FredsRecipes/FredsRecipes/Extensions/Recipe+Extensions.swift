@@ -20,7 +20,7 @@ extension Recipe {
   
   static let testRecipeWithSource = Recipe(
     cuisine: "Matrix",
-    name: "Morpheus's Slop",
+    name: "Source",
     photoUrlLarge: .empty,
     photoUrlSmall: .empty,
     sourceUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -30,7 +30,7 @@ extension Recipe {
   
   static let testRecipeWithYouTube = Recipe(
     cuisine: "Matrix",
-    name: "Morpheus's Slop",
+    name: "Youtube",
     photoUrlLarge: .empty,
     photoUrlSmall: .empty,
     sourceUrl: nil,
@@ -40,7 +40,7 @@ extension Recipe {
   
   static let testRecipeWithSourceAndYouTube = Recipe(
     cuisine: "Matrix",
-    name: "Morpheus's Slop",
+    name: "Both",
     photoUrlLarge: .empty,
     photoUrlSmall: .empty,
     sourceUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",

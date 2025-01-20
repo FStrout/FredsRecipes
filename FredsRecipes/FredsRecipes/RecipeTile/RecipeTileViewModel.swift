@@ -9,9 +9,9 @@ import SwiftUI
 
 class RecipeTileViewModel: ObservableObject {
   
-  @Published var name: String = .empty
   @Published var hasSource: Bool = false
   @Published var hasYoutube: Bool = false
+  @Published var name: String = .empty
   
   let recipe: Recipe
   
