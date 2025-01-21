@@ -159,7 +159,6 @@ struct BlankView: View {
 
 #if DEBUG
 #Preview {
-  
   RecipeListView()
 }
 #endif
