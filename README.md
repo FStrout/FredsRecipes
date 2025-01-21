@@ -1,6 +1,9 @@
 # FredsRecipes
 Fred Strout's submission of the Fetch recipes new candidate exercise.
 ### Summary: Include screen shots or a video of your app highlighting its features
+I decided to organize my recipes by cuisine. I created a vertically scrolling list sectioned by cuisine and then created a horizontally scrolling list of the recipes associated with that cuisine. I also included a convenient way to redirect the endpoint to the empty and malformed URLs, although that required adding a little extra unnecessary code.
+
+[![Watch the video](https://img.youtube.com/vi/Q4IpL2gt3n0/maxresdefault.jpg)](https://youtu.be/Q4IpL2gt3n0)
 
 ### Focus Areas: What specific areas of the project did you prioritize? Why did you choose to focus on these areas?
 I can't say I prioritized any part over another. I started on the UI, mostly since that's what I had to do it my last job since we would usually build out the ui using mocks before the backend was ready to be consumed.
