@@ -27,15 +27,16 @@ struct RecipeTileView: View {
           case .empty:
             Image(systemName: "photo")
               .resizable()
-              .frame(width: .imageSize, height: .imageSize)
+              .frame(width: .placeholderImageSizeWidth, height: .placeholderImageSizeHeight)
           case .success(let image):
             image
             .resizable()
             .frame(width: .imageSize, height: .imageSize)
           case .failure:
-            Image(systemName: "photo")
+            Image(systemName: "photo.badge.exclamationmark")
               .resizable()
-              .frame(width: .imageSize, height: .imageSize)
+              .frame(width: .placeholderImageSizeWidth, height: .placeholderImageSizeHeight)
+              .foregroundStyle(Color.red)
           @unknown default:
             fatalError()
           }

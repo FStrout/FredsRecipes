@@ -21,6 +21,15 @@ struct RecipeListView: View {
         
         Spacer()
         Button {
+          viewModel.loadContent()
+        } label: {
+          Image(systemName: "arrow.clockwise")
+            .resizable()
+            .frame(width: .iconButtonSize, height: .iconButtonSize)
+        }
+        .padding(.trailing, .spacing4)
+        
+        Button {
           viewModel.toggleEndpointButtons()
         } label: {
           Image(systemName: "gear")
@@ -29,8 +38,10 @@ struct RecipeListView: View {
         }
         .padding(.trailing, .spacing16)
       }
-      
       ScrollView {
+        Text("Drag down to refresh.")
+          .font(.system(size: 10))
+          .fontWeight(.light)
         switch viewModel.viewStatus {
           case .loading:
           loadingView

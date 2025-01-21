@@ -14,19 +14,11 @@
 			remoteGlobalIDString = F31BD6E32D3989F000FE2ECD;
 			remoteInfo = FredsRecipes;
 		};
-		F31BD6FF2D3989F200FE2ECD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F31BD6DC2D3989F000FE2ECD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F31BD6E32D3989F000FE2ECD;
-			remoteInfo = FredsRecipes;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		F31BD6E42D3989F000FE2ECD /* FredsRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FredsRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31BD6F42D3989F200FE2ECD /* FredsRecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FredsRecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F31BD6FE2D3989F200FE2ECD /* FredsRecipesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FredsRecipesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3B32BCE2D3EAA2E0064F861 /* FredsRecipes.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = FredsRecipes.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,11 +47,6 @@
 			path = FredsRecipes;
 			sourceTree = "<group>";
 		};
-		F31BD7012D3989F200FE2ECD /* FredsRecipesUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FredsRecipesUITests;
-			sourceTree = "<group>";
-		};
 		F341A3482D3EF96400E0B153 /* FredsRecipesTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -86,13 +73,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F31BD6FB2D3989F200FE2ECD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -102,7 +82,6 @@
 				F3B32BCE2D3EAA2E0064F861 /* FredsRecipes.xctestplan */,
 				F31BD6E62D3989F000FE2ECD /* FredsRecipes */,
 				F341A3482D3EF96400E0B153 /* FredsRecipesTests */,
-				F31BD7012D3989F200FE2ECD /* FredsRecipesUITests */,
 				F31BD6E52D3989F000FE2ECD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,7 +91,6 @@
 			children = (
 				F31BD6E42D3989F000FE2ECD /* FredsRecipes.app */,
 				F31BD6F42D3989F200FE2ECD /* FredsRecipesTests.xctest */,
-				F31BD6FE2D3989F200FE2ECD /* FredsRecipesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,29 +141,6 @@
 			productReference = F31BD6F42D3989F200FE2ECD /* FredsRecipesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F31BD6FD2D3989F200FE2ECD /* FredsRecipesUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F31BD70E2D3989F200FE2ECD /* Build configuration list for PBXNativeTarget "FredsRecipesUITests" */;
-			buildPhases = (
-				F31BD6FA2D3989F200FE2ECD /* Sources */,
-				F31BD6FB2D3989F200FE2ECD /* Frameworks */,
-				F31BD6FC2D3989F200FE2ECD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F31BD7002D3989F200FE2ECD /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				F31BD7012D3989F200FE2ECD /* FredsRecipesUITests */,
-			);
-			name = FredsRecipesUITests;
-			packageProductDependencies = (
-			);
-			productName = FredsRecipesUITests;
-			productReference = F31BD6FE2D3989F200FE2ECD /* FredsRecipesUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -200,10 +155,6 @@
 						CreatedOnToolsVersion = 16.2;
 					};
 					F31BD6F32D3989F200FE2ECD = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = F31BD6E32D3989F000FE2ECD;
-					};
-					F31BD6FD2D3989F200FE2ECD = {
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = F31BD6E32D3989F000FE2ECD;
 					};
@@ -225,7 +176,6 @@
 			targets = (
 				F31BD6E32D3989F000FE2ECD /* FredsRecipes */,
 				F31BD6F32D3989F200FE2ECD /* FredsRecipesTests */,
-				F31BD6FD2D3989F200FE2ECD /* FredsRecipesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -239,13 +189,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F31BD6F22D3989F200FE2ECD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F31BD6FC2D3989F200FE2ECD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -269,13 +212,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F31BD6FA2D3989F200FE2ECD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -283,11 +219,6 @@
 			isa = PBXTargetDependency;
 			target = F31BD6E32D3989F000FE2ECD /* FredsRecipes */;
 			targetProxy = F31BD6F52D3989F200FE2ECD /* PBXContainerItemProxy */;
-		};
-		F31BD7002D3989F200FE2ECD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F31BD6E32D3989F000FE2ECD /* FredsRecipes */;
-			targetProxy = F31BD6FF2D3989F200FE2ECD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -507,40 +438,6 @@
 			};
 			name = Release;
 		};
-		F31BD70F2D3989F200FE2ECD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 58A3K427LB;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.maddlabs.FredsRecipesUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FredsRecipes;
-			};
-			name = Debug;
-		};
-		F31BD7102D3989F200FE2ECD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 58A3K427LB;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.maddlabs.FredsRecipesUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FredsRecipes;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -567,15 +464,6 @@
 			buildConfigurations = (
 				F31BD70C2D3989F200FE2ECD /* Debug */,
 				F31BD70D2D3989F200FE2ECD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F31BD70E2D3989F200FE2ECD /* Build configuration list for PBXNativeTarget "FredsRecipesUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F31BD70F2D3989F200FE2ECD /* Debug */,
-				F31BD7102D3989F200FE2ECD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
