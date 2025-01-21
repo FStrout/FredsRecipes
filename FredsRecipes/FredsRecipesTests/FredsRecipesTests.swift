@@ -5,8 +5,65 @@
 //  Created by Fred Strout on 1/16/25.
 //
 
+import Foundation
 import Testing
 @testable import FredsRecipes
+
+struct APIServiceTests {
+  
+  private var session: URLSession = {
+    let config = URLSessionConfiguration.ephemeral
+    config.protocolClasses = [MockURLProtocol.self]
+    return URLSession(configuration: config)
+  }()
+  
+  private var url: URL = Endpoint.recipes.url
+  
+  @Test func requestSuccessResponseIsValid() async throws {
+    let service: APIService = APIService(session: session)
+    let httpResponse = getHTTPURLResponse(200)
+    
+    guard let path = Bundle.main.path(forResource: "MockJSON", ofType: "json"),
+          let data = FileManager.default.contents(atPath: path) else {
+      assertionFailure("Failed to retrieve the json file from the bundle")
+      return
+    }
+    
+    MockURLProtocol.loadingHandler = {
+      return (httpResponse, data)
+    }
+    
+    let result = try await service.request(.recipes)
+    
+    #expect(result.count == 1)
+  }
+  
+  @Test func requestBadRequest() async {
+    let service: APIService = APIService(session: session)
+    let httpResponse = getHTTPURLResponse(400)
+    
+    MockURLProtocol.loadingHandler = {
+      return (httpResponse, nil)
+    }
+    
+    do {
+      let _ = try await service.request(.recipes)
+    } catch let error as NetworkError {
+      #expect(error.errorDescription == "Bad Request")
+    } catch {
+      assertionFailure("Failed to retrieve the expected error type.")
+    }
+  }
+  
+  func getHTTPURLResponse(_ statusCode: Int) -> HTTPURLResponse {
+    return HTTPURLResponse(
+      url: url,
+      statusCode: statusCode,
+      httpVersion: nil,
+      headerFields: nil
+    )!
+  }
+}
 
 struct RecipeListViewModelTests {
   let viewModel = RecipeListViewModel()

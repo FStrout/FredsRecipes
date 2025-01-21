@@ -50,7 +50,7 @@ final class RecipeListViewModel: ObservableObject {
   
   private func loadRecipes() async {
     do {
-      let recipes = try await ApiService.shared.fetchRecipes(endpoint: endpoint)
+      let recipes = try await APIService.shared.request(endpoint)
       await MainActor.run {
         let recipes: [Recipe] = recipes
         loadCuisines(recipes: recipes)

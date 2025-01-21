@@ -30,20 +30,43 @@
 		F3B32BCE2D3EAA2E0064F861 /* FredsRecipes.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = FredsRecipes.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F341A34C2D3EF96800E0B153 /* Exceptions for "FredsRecipesTests" folder in "FredsRecipes" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FredsRecipesTests.swift,
+				MockURLProtocol.swift,
+			);
+			target = F31BD6E32D3989F000FE2ECD /* FredsRecipes */;
+		};
+		F341A34D2D3EF96800E0B153 /* Exceptions for "FredsRecipesTests" folder in "FredsRecipesTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FredsRecipesTests.swift,
+				MockURLProtocol.swift,
+			);
+			target = F31BD6F32D3989F200FE2ECD /* FredsRecipesTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F31BD6E62D3989F000FE2ECD /* FredsRecipes */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = FredsRecipes;
 			sourceTree = "<group>";
 		};
-		F31BD6F72D3989F200FE2ECD /* FredsRecipesTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FredsRecipesTests;
-			sourceTree = "<group>";
-		};
 		F31BD7012D3989F200FE2ECD /* FredsRecipesUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = FredsRecipesUITests;
+			sourceTree = "<group>";
+		};
+		F341A3482D3EF96400E0B153 /* FredsRecipesTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F341A34C2D3EF96800E0B153 /* Exceptions for "FredsRecipesTests" folder in "FredsRecipes" target */,
+				F341A34D2D3EF96800E0B153 /* Exceptions for "FredsRecipesTests" folder in "FredsRecipesTests" target */,
+			);
+			path = FredsRecipesTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -78,7 +101,7 @@
 			children = (
 				F3B32BCE2D3EAA2E0064F861 /* FredsRecipes.xctestplan */,
 				F31BD6E62D3989F000FE2ECD /* FredsRecipes */,
-				F31BD6F72D3989F200FE2ECD /* FredsRecipesTests */,
+				F341A3482D3EF96400E0B153 /* FredsRecipesTests */,
 				F31BD7012D3989F200FE2ECD /* FredsRecipesUITests */,
 				F31BD6E52D3989F000FE2ECD /* Products */,
 			);
@@ -111,6 +134,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				F31BD6E62D3989F000FE2ECD /* FredsRecipes */,
+				F341A3482D3EF96400E0B153 /* FredsRecipesTests */,
 			);
 			name = FredsRecipes;
 			packageProductDependencies = (
@@ -131,9 +155,6 @@
 			);
 			dependencies = (
 				F31BD6F62D3989F200FE2ECD /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				F31BD6F72D3989F200FE2ECD /* FredsRecipesTests */,
 			);
 			name = FredsRecipesTests;
 			packageProductDependencies = (
