@@ -17,9 +17,7 @@ struct APIServiceTests {
     return URLSession(configuration: config)
   }()
   
-  private var url: URL = Endpoint.recipes.url
-  
-  @Test func requestSuccessResponseIsValid() async throws {
+  @Test func requestSuccess() async throws {
     let service: APIService = APIService(session: session)
     let httpResponse = getHTTPURLResponse(200)
     
@@ -58,7 +56,7 @@ struct APIServiceTests {
   
   func getHTTPURLResponse(_ statusCode: Int) -> HTTPURLResponse {
     return HTTPURLResponse(
-      url: url,
+      url: Endpoint.recipes.url,
       statusCode: statusCode,
       httpVersion: nil,
       headerFields: nil
