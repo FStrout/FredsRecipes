@@ -18,8 +18,6 @@ extension CGFloat {
   static let iconButtonSize: CGFloat = 24
   static let imageSize: CGFloat = 120
   static let endpointButtonHeight: CGFloat = 80
-  static let placeholderImageSizeWidth: CGFloat = 90
-  static let placeholderImageSizeHeight: CGFloat = 60
 
   static let spacing2: CGFloat = 2
   static let spacing4: CGFloat = 4
@@ -31,5 +29,6 @@ extension CGFloat {
   static let spacing30: CGFloat = 30
   static let spacing32: CGFloat = 32
   static let spacing64: CGFloat = 64
+  static let spacing96: CGFloat = 96
   static let spacing128: CGFloat = 128
 }

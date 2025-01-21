@@ -25,9 +25,7 @@ struct RecipeTileView: View {
         CacheAsyncImage(url: URL(string: viewModel.recipe.photoUrlSmall)) { phase in
           switch phase {
           case .empty:
-            Image(systemName: "photo")
-              .resizable()
-              .frame(width: .placeholderImageSizeWidth, height: .placeholderImageSizeHeight)
+            ProgressView()
           case .success(let image):
             image
             .resizable()
@@ -35,12 +33,13 @@ struct RecipeTileView: View {
           case .failure:
             Image(systemName: "photo.badge.exclamationmark")
               .resizable()
-              .frame(width: .placeholderImageSizeWidth, height: .placeholderImageSizeHeight)
+              .frame(width: .spacing96, height: .spacing64)
               .foregroundStyle(Color.red)
           @unknown default:
             fatalError()
           }
         }
+        .frame(width: .imageSize, height: .imageSize)
         Spacer()
       }
       HStack {
@@ -77,6 +76,12 @@ struct RecipeTileView: View {
 
 #if DEBUG
 #Preview {
-  RecipeTileView(recipe: .testRecipeBasic)
+  let recipes = Bundle.main.decode(
+    RecipeResponse.self,
+    from: "MockJSON.json",
+    keyDecodingStrategy: .convertFromSnakeCase
+  ).recipes
+  
+  RecipeTileView(recipe: recipes[0])
 }
 #endif

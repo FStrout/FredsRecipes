@@ -23,14 +23,6 @@
         "identifier" : "F31BD6F32D3989F200FE2ECD",
         "name" : "FredsRecipesTests"
       }
-    },
-    {
-      "parallelizable" : true,
-      "target" : {
-        "containerPath" : "container:FredsRecipes.xcodeproj",
-        "identifier" : "F31BD6FD2D3989F200FE2ECD",
-        "name" : "FredsRecipesUITests"
-      }
     }
   ],
   "version" : 1

@@ -36,6 +36,7 @@ struct APIServiceTests {
     let result = try await service.request(.recipes)
     
     #expect(result.count == 1)
+    #expect(result[0].recipes.count == 4)
   }
   
   @Test func requestBadRequest() async {
@@ -72,7 +73,7 @@ struct RecipeListViewModelTests {
     
     // expect
     #expect(!viewModel.displayEndpointButtons)
-    #expect(viewModel.sections.isEmpty)
+    #expect(viewModel.cuisines.isEmpty)
     #expect(viewModel.viewStatus == .loading)
   }
   
@@ -95,7 +96,7 @@ struct RecipeListViewModelTests {
     while viewModel.viewStatus == .loading {}
     //expect
     #expect(viewModel.viewStatus == .loaded)
-    #expect(!viewModel.sections.isEmpty)
+    #expect(!viewModel.cuisines.isEmpty)
   }
   
   @Test func loadContentEmpty() async throws {
@@ -105,7 +106,7 @@ struct RecipeListViewModelTests {
     while viewModel.viewStatus == .loading {}
     // expect
     #expect(viewModel.viewStatus == .loaded)
-    #expect(viewModel.sections.isEmpty)
+    #expect(viewModel.cuisines.isEmpty)
   }
   
   @Test func loadContentError() async throws {
@@ -115,44 +116,50 @@ struct RecipeListViewModelTests {
     while viewModel.viewStatus == .loading {}
     // expect
     #expect(viewModel.viewStatus == .error)
-    #expect(viewModel.sections.isEmpty)
+    #expect(viewModel.cuisines.isEmpty)
   }
 }
 
 struct RecipeTileTests {
-  @Test func initialState() async throws {
+  let recipes = Bundle.main.decode(
+    RecipeResponse.self,
+    from: "MockJSON.json",
+    keyDecodingStrategy: .convertFromSnakeCase
+  ).recipes
+  
+  @Test func hasNoOutsideLinks() async throws {
     // setup
-    let viewModel = RecipeTileViewModel(recipe: .testRecipeBasic)
+    let viewModel = RecipeTileViewModel(recipe: recipes[0])
     // evaluate
     #expect(!viewModel.hasSource)
     #expect(!viewModel.hasYoutube)
-    #expect(viewModel.name == "Morpheus's Slop")
+    #expect(viewModel.name == "Morpheus's Slop - None")
   }
   
   @Test func hasSourceAndHasYoutube() async throws {
     // setup
-    let viewModel = RecipeTileViewModel(recipe: .testRecipeWithSourceAndYouTube)
+    let viewModel = RecipeTileViewModel(recipe: recipes[1])
     // evaluate
     #expect(viewModel.hasSource)
     #expect(viewModel.hasYoutube)
-    #expect(viewModel.name == "Both")
+    #expect(viewModel.name == "Morpheus's Slop - Both")
   }
   
   @Test func hasSourceAndNoYoutube() async throws {
     // setup
-    let viewModel = RecipeTileViewModel(recipe: .testRecipeWithSource)
+    let viewModel = RecipeTileViewModel(recipe: recipes[2])
     // evaluate
     #expect(viewModel.hasSource)
     #expect(!viewModel.hasYoutube)
-    #expect(viewModel.name == "Source")
+    #expect(viewModel.name == "Morpheus's Slop - Source")
   }
   
   @Test func hasYoutubeAndNoSource() async throws {
     // setup
-    let viewModel = RecipeTileViewModel(recipe: .testRecipeWithYouTube)
+    let viewModel = RecipeTileViewModel(recipe: recipes[3])
     // evaluate
     #expect(!viewModel.hasSource)
     #expect(viewModel.hasYoutube)
-    #expect(viewModel.name == "Youtube")
+    #expect(viewModel.name == "Morpheus's Slop - Youtube")
   }
 }

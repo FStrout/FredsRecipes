@@ -48,7 +48,7 @@ struct RecipeListView: View {
         case .error:
           errorView
         case .loaded:
-          if viewModel.sections.isEmpty { emptyView } else { loadedView }
+          if viewModel.cuisines.isEmpty { emptyView } else { loadedView }
         }
       }
       .refreshable {
@@ -113,7 +113,7 @@ struct RecipeListView: View {
   
   var loadedView: some View {
     VStack(spacing: .zero) {
-      ForEach(viewModel.sections, id: \.cuisine) { section in
+      ForEach(viewModel.cuisines, id: \.cuisine) { section in
         LazyVStack(alignment: .leading, spacing: .zero) {
           Text(section.cuisine)
             .padding(.bottom, .spacing4)
@@ -159,6 +159,7 @@ struct BlankView: View {
 
 #if DEBUG
 #Preview {
+  
   RecipeListView()
 }
 #endif

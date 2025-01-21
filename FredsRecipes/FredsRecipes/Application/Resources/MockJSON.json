@@ -1,0 +1,40 @@
+{
+  "recipes": [
+    {
+      "cuisine": "Matrix",
+      "name": "Morpheus's Slop - None",
+      "photo_url_large": "https://cdn.loveandlemons.com/wp-content/uploads/2022/02/Instant-Pot-Steel-Cut-Oats_P-04.jpg",
+      "photo_url_small": "https://cdn.loveandlemons.com/wp-content/uploads/2022/02/Instant-Pot-Steel-Cut-Oats_P-04.jpg",
+      "source_url": null,
+      "uuid": "none_uuid",
+      "youtube_url": null
+    },
+    {
+      "cuisine": "Matrix",
+      "name": "Morpheus's Slop - Both",
+      "photo_url_large": "https://cdn.loveandlemons.com/wp-content/uploads/2022/02/Instant-Pot-Steel-Cut-Oats_P-04.jpg",
+      "photo_url_small": "https://cdn.loveandlemons.com/wp-content/uploads/2022/02/Instant-Pot-Steel-Cut-Oats_P-04.jpg",
+      "source_url": "https://www.loveandlemons.com/instant-pot-steel-cut-oats/",
+      "uuid": "both_uuid",
+      "youtube_url": "https://youtu.be/O5peCAyB0EU?si=RHQHwMHtUeVzb1mY"
+    },
+    {
+      "cuisine": "Matrix",
+      "name": "Morpheus's Slop - Source",
+      "photo_url_large": "https://cdn.loveandlemons.com/wp-content/uploads/2022/02/Instant-Pot-Steel-Cut-Oats_P-04.jpg",
+      "photo_url_small": "https://cdn.loveandlemons.com/wp-content/uploads/2022/02/Instant-Pot-Steel-Cut-Oats_P-04.jpg",
+      "source_url": "https://www.loveandlemons.com/instant-pot-steel-cut-oats/",
+      "uuid": "source_uuid",
+      "youtube_url": null
+    },
+    {
+      "cuisine": "Matrix",
+      "name": "Morpheus's Slop - Youtube",
+      "photo_url_large": "https://cdn.loveandlemons.com/wp-content/uploads/2022/02/Instant-Pot-Steel-Cut-Oats_P-04.jpg",
+      "photo_url_small": "https://cdn.loveandlemons.com/wp-content/uploads/2022/02/Instant-Pot-Steel-Cut-Oats_P-04.jpg",
+      "source_url": null,
+      "uuid": "youtube_uuid",
+      "youtube_url": "https://youtu.be/O5peCAyB0EU?si=RHQHwMHtUeVzb1mY"
+    }
+  ]
+}

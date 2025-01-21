@@ -19,13 +19,26 @@ class APIService {
     decoder.keyDecodingStrategy = .convertFromSnakeCase
   }
   
-  func request(_ endpoint: Endpoint) async throws -> [Recipe] {
+  func request(_ endpoint: Endpoint) async throws -> [Cuisine] {
     let request = URLRequest(url: endpoint.url)
     
     let (data, response) = try await session.data(for: request)
     
     let decodedResponse = try decoder.decode(RecipeResponse.self, from: try mapResponse(response: (data, response)))
     
-    return decodedResponse.recipes
+    return loadCuisines(recipes: decodedResponse.recipes)
+  }
+  
+  private func loadCuisines(recipes: [Recipe]) -> [Cuisine] {
+    var results = [Cuisine]()
+    let cuisines = Set(recipes.map { $0.cuisine })
+    
+    for cuisine in cuisines.sorted() {
+      let recipesForCuisine = recipes.filter { $0.cuisine == cuisine }
+      
+      results.append(Cuisine(cuisine: cuisine, recipes: recipesForCuisine))
+    }
+    
+    return results
   }
 }

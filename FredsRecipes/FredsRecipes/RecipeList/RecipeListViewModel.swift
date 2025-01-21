@@ -10,7 +10,7 @@ import SwiftUI
 final class RecipeListViewModel: ObservableObject {
   
   @Published var displayEndpointButtons: Bool = false
-  @Published var sections: [Cuisine] = []
+  @Published var cuisines: [Cuisine] = []
   @Published var viewStatus: ViewStatus = .loading
   
   var endpoint: Endpoint = .recipes
@@ -22,11 +22,12 @@ final class RecipeListViewModel: ObservableObject {
   // View Actions
   
   func loadContent(endpoint: Endpoint = .recipes) {
+    self.displayEndpointButtons = false
     self.viewStatus = .loading
-    self.sections.removeAll()
+    self.cuisines.removeAll()
     self.endpoint = endpoint
     Task {
-      await loadRecipes()
+      await loadCuisines()
     }
   }
   
@@ -38,27 +39,16 @@ final class RecipeListViewModel: ObservableObject {
   
   // Local Methods
   
-  private func loadCuisines(recipes: [Recipe]) {
-    let cuisines = Set(recipes.map { $0.cuisine })
-    
-    for cuisine in cuisines.sorted() {
-      let recipesForCuisine = recipes.filter { $0.cuisine == cuisine }
-      
-      self.sections.append(Cuisine(cuisine: cuisine, recipes: recipesForCuisine))
-    }
-  }
-  
-  private func loadRecipes() async {
+  private func loadCuisines() async {
     do {
-      let recipes = try await APIService.shared.request(endpoint)
+      let cuisines = try await APIService.shared.request(endpoint)
       await MainActor.run {
-        let recipes: [Recipe] = recipes
-        loadCuisines(recipes: recipes)
+        self.cuisines = cuisines
         self.viewStatus = .loaded
       }
     } catch {
       await MainActor.run {
-        self.sections.removeAll()
+        self.cuisines.removeAll()
         self.viewStatus = .error
       }
     }
