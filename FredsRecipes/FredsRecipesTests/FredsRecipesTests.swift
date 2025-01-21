@@ -49,7 +49,7 @@ struct APIServiceTests {
     do {
       let _ = try await service.request(.recipes)
     } catch let error as NetworkError {
-      #expect(error.errorDescription == "Bad Request")
+      #expect(error.errorDescription == "Request Failed")
     } catch {
       assertionFailure("Failed to retrieve the expected error type.")
     }
