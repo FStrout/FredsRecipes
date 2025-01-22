@@ -18,10 +18,10 @@ struct APIServiceTests {
   }()
   
   @Test func requestSuccess() async throws {
-    let service: APIService = APIService(session: session)
+    let service: DefaultAPIService = DefaultAPIService(session: session)
     let httpResponse = getHTTPURLResponse(200)
     
-    guard let path = Bundle.main.path(forResource: "MockJSON", ofType: "json"),
+    guard let path = Bundle.main.path(forResource: "MockRecipes", ofType: "json"),
           let data = FileManager.default.contents(atPath: path) else {
       assertionFailure("Failed to retrieve the json file from the bundle")
       return
@@ -38,7 +38,7 @@ struct APIServiceTests {
   }
   
   @Test func requestBadRequest() async {
-    let service: APIService = APIService(session: session)
+    let service: DefaultAPIService = DefaultAPIService(session: session)
     let httpResponse = getHTTPURLResponse(400)
     
     MockURLProtocol.loadingHandler = {
@@ -65,7 +65,7 @@ struct APIServiceTests {
 }
 
 struct RecipeListViewModelTests {
-  let viewModel = RecipeListViewModel()
+  let viewModel = RecipeListViewModel(apiService: MockAPIService.shared)
   
   @Test func initialState() async throws {
     
@@ -121,7 +121,7 @@ struct RecipeListViewModelTests {
 struct RecipeTileTests {
   let recipes = Bundle.main.decode(
     RecipeResponse.self,
-    from: "MockJSON.json",
+    from: "MockRecipes.json",
     keyDecodingStrategy: .convertFromSnakeCase
   ).recipes
   

@@ -9,7 +9,11 @@ import SwiftUI
 
 struct RecipeListView: View {
   
-  @ObservedObject var viewModel: RecipeListViewModel = RecipeListViewModel()
+  @ObservedObject var viewModel: RecipeListViewModel
+  
+  init(viewModel: RecipeListViewModel = RecipeListViewModel(apiService: DefaultAPIService())) {
+    self.viewModel = viewModel
+  }
   
   var body: some View {
     VStack(spacing: .zero) {

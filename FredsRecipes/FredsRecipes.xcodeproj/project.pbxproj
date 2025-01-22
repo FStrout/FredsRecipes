@@ -27,6 +27,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				FredsRecipesTests.swift,
+				MockAPIService.swift,
 				MockURLProtocol.swift,
 			);
 			target = F31BD6E32D3989F000FE2ECD /* FredsRecipes */;
@@ -35,6 +36,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				FredsRecipesTests.swift,
+				MockAPIService.swift,
 				MockURLProtocol.swift,
 			);
 			target = F31BD6F32D3989F200FE2ECD /* FredsRecipesTests */;

@@ -78,7 +78,7 @@ struct RecipeTileView: View {
 #Preview {
   let recipes = Bundle.main.decode(
     RecipeResponse.self,
-    from: "MockJSON.json",
+    from: "MockRecipes.json",
     keyDecodingStrategy: .convertFromSnakeCase
   ).recipes
   

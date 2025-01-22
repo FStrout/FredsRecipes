@@ -15,7 +15,10 @@ final class RecipeListViewModel: ObservableObject {
   
   var endpoint: Endpoint = .recipes
   
-  init() {
+  let apiServiceProtocol: APIServiceProtocol
+   
+  init(apiService: APIServiceProtocol) {
+    self.apiServiceProtocol = apiService
     loadContent()
   }
   
@@ -41,7 +44,7 @@ final class RecipeListViewModel: ObservableObject {
   
   private func loadCuisines() async {
     do {
-      let cuisines = try await APIService.shared.request(endpoint)
+      let cuisines = try await apiServiceProtocol.request(endpoint)
       await MainActor.run {
         self.cuisines = cuisines
         self.viewStatus = .loaded

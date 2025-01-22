@@ -7,8 +7,11 @@
 
 import Foundation
 
-class APIService {
-  static let shared = APIService()
+protocol APIServiceProtocol {
+  func request(_ endpoint: Endpoint) async throws -> [Cuisine]
+}
+
+class DefaultAPIService: APIServiceProtocol {
   
   let session: URLSession
   let decoder: JSONDecoder
@@ -26,19 +29,6 @@ class APIService {
     
     let decodedResponse = try decoder.decode(RecipeResponse.self, from: try mapResponse(response: (data, response)))
     
-    return loadCuisines(recipes: decodedResponse.recipes)
-  }
-  
-  private func loadCuisines(recipes: [Recipe]) -> [Cuisine] {
-    var results = [Cuisine]()
-    let cuisines = Set(recipes.map { $0.cuisine })
-    
-    for cuisine in cuisines.sorted() {
-      let recipesForCuisine = recipes.filter { $0.cuisine == cuisine }
-      
-      results.append(Cuisine(cuisine: cuisine, recipes: recipesForCuisine))
-    }
-    
-    return results
+    return decodedResponse.cuisines
   }
 }
