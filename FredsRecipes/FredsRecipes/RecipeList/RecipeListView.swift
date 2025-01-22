@@ -23,7 +23,7 @@ struct RecipeListView: View {
         Button {
           viewModel.loadContent()
         } label: {
-          Image(systemName: "arrow.clockwise")
+          Image(systemName: "arrow.trianglehead.clockwise")
             .resizable()
             .frame(width: .iconButtonSize, height: .iconButtonSize)
         }
@@ -84,6 +84,7 @@ struct RecipeListView: View {
         .transition(AnyTransition(.move(edge: .bottom)))
       }
     }
+    .background(Color.asset.primaryBackground)
   }
   
   var errorView: some View {
@@ -158,7 +159,12 @@ struct BlankView: View {
 }
 
 #if DEBUG
-#Preview {
+#Preview("Light Mode") {
   RecipeListView()
+}
+
+#Preview("Dark Mode") {
+  RecipeListView()
+    .preferredColorScheme(.dark)
 }
 #endif
