@@ -76,12 +76,12 @@ struct RecipeTileView: View {
 
 #if DEBUG
 #Preview {
-  let recipes = Bundle.main.decode(
+  if let recipes = Bundle.main.decode(
     RecipeResponse.self,
     from: "MockRecipes.json",
     keyDecodingStrategy: .convertFromSnakeCase
-  ).recipes
-  
-  RecipeTileView(recipe: recipes[0])
+  ) {
+    RecipeTileView(recipe: recipes.recipes[0])
+  }
 }
 #endif

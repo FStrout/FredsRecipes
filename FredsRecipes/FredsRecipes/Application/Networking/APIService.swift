@@ -27,7 +27,11 @@ class DefaultAPIService: APIServiceProtocol {
     
     let (data, response) = try await session.data(for: request)
     
-    let decodedResponse = try decoder.decode(RecipeResponse.self, from: try mapResponse(response: (data, response)))
+    guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+      throw NetworkError.requestFailed
+    }
+    
+    let decodedResponse = try decoder.decode(RecipeResponse.self, from: data)
     
     return decodedResponse.cuisines
   }

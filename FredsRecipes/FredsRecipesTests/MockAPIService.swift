@@ -21,7 +21,7 @@ class MockAPIService: APIServiceProtocol {
       throw NetworkError.malformedURL
     case .recipes:
       let response = Bundle.main.decode(RecipeResponse.self, from: "MockRecipes.json", keyDecodingStrategy: .convertFromSnakeCase)
-      return response.cuisines
+      return response?.cuisines ?? [Cuisine]()
     }
   }
 }

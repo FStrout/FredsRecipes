@@ -48,7 +48,7 @@ struct APIServiceTests {
     do {
       let _ = try await service.request(.recipes)
     } catch let error as NetworkError {
-      #expect(error.errorDescription == "Request Failed")
+      #expect(error.errorDescription == "Request failed")
     } catch {
       assertionFailure("Failed to retrieve the expected error type.")
     }
@@ -123,10 +123,15 @@ struct RecipeTileTests {
     RecipeResponse.self,
     from: "MockRecipes.json",
     keyDecodingStrategy: .convertFromSnakeCase
-  ).recipes
+  )?.recipes
   
   @Test func hasNoOutsideLinks() async throws {
     // setup
+    guard let recipes else {
+      assertionFailure("No recipes found")
+      return
+    }
+    
     let viewModel = RecipeTileViewModel(recipe: recipes[0])
     // evaluate
     #expect(!viewModel.hasSource)
@@ -136,6 +141,11 @@ struct RecipeTileTests {
   
   @Test func hasSourceAndHasYoutube() async throws {
     // setup
+    guard let recipes else {
+      assertionFailure("No recipes found")
+      return
+    }
+    
     let viewModel = RecipeTileViewModel(recipe: recipes[1])
     // evaluate
     #expect(viewModel.hasSource)
@@ -145,6 +155,11 @@ struct RecipeTileTests {
   
   @Test func hasSourceAndNoYoutube() async throws {
     // setup
+    guard let recipes else {
+      assertionFailure("No recipes found")
+      return
+    }
+    
     let viewModel = RecipeTileViewModel(recipe: recipes[2])
     // evaluate
     #expect(viewModel.hasSource)
@@ -154,6 +169,11 @@ struct RecipeTileTests {
   
   @Test func hasYoutubeAndNoSource() async throws {
     // setup
+    guard let recipes else {
+      assertionFailure("No recipes found")
+      return
+    }
+    
     let viewModel = RecipeTileViewModel(recipe: recipes[3])
     // evaluate
     #expect(!viewModel.hasSource)
