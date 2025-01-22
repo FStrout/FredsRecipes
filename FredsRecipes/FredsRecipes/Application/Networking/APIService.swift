@@ -8,7 +8,7 @@
 import Foundation
 
 protocol APIServiceProtocol {
-  func request(_ endpoint: Endpoint) async throws -> [Cuisine]
+  func fetchRecipes(_ endpoint: Endpoint) async throws -> [Cuisine]
 }
 
 class DefaultAPIService: APIServiceProtocol {
@@ -22,7 +22,7 @@ class DefaultAPIService: APIServiceProtocol {
     decoder.keyDecodingStrategy = .convertFromSnakeCase
   }
   
-  func request(_ endpoint: Endpoint) async throws -> [Cuisine] {
+  func fetchRecipes(_ endpoint: Endpoint) async throws -> [Cuisine] {
     let request = URLRequest(url: endpoint.url)
     
     let (data, response) = try await session.data(for: request)

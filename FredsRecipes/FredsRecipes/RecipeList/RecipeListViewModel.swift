@@ -44,7 +44,7 @@ final class RecipeListViewModel: ObservableObject {
   
   private func loadCuisines() async {
     do {
-      let cuisines = try await apiServiceProtocol.request(endpoint)
+      let cuisines = try await apiServiceProtocol.fetchRecipes(endpoint)
       await MainActor.run {
         self.cuisines = cuisines
         self.viewStatus = .loaded
@@ -55,5 +55,6 @@ final class RecipeListViewModel: ObservableObject {
         self.viewStatus = .error
       }
     }
+    Logger.d(cuisines.count)
   }
 }

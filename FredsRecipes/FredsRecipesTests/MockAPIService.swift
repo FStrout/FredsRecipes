@@ -13,7 +13,7 @@ class MockAPIService: APIServiceProtocol {
   
   private init() {}
   
-  func request(_ endpoint: Endpoint) async throws -> [Cuisine] {
+  func fetchRecipes(_ endpoint: Endpoint) async throws -> [Cuisine] {
     switch endpoint {
     case .empty:
       return []

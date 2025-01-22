@@ -31,7 +31,7 @@ struct APIServiceTests {
       return (httpResponse, data)
     }
     
-    let result = try await service.request(.recipes)
+    let result = try await service.fetchRecipes(.recipes)
     
     #expect(result.count == 1)
     #expect(result[0].recipes.count == 4)
@@ -46,7 +46,7 @@ struct APIServiceTests {
     }
     
     do {
-      let _ = try await service.request(.recipes)
+      let _ = try await service.fetchRecipes(.recipes)
     } catch let error as NetworkError {
       #expect(error.errorDescription == "Request failed")
     } catch {
