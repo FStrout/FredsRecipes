@@ -120,7 +120,7 @@ struct RecipeListView: View {
             .padding(.bottom, .spacing4)
           ScrollView(.horizontal) {
             LazyHStack(spacing: .spacing4) {
-              ForEach(section.recipes, id: \.self) { recipe in
+              ForEach(section.recipes) { recipe in
                 RecipeTileView(recipe: recipe)
               }
             }
