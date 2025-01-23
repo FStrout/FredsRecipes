@@ -9,15 +9,18 @@ import Foundation
 
 public enum NetworkError: Error, LocalizedError {
   
-  case requestFailed
-  case malformedURL
+  case invalidData
+  case invalidResponse
+  case invalidURL
   
   public var errorDescription: String {
     switch self {
-    case .requestFailed:
-      return "Request failed"
-    case .malformedURL:
-      return "Malformed URL"
+    case .invalidData:
+      return "Invalid data"
+    case .invalidResponse:
+      return "Invalid response"
+    case .invalidURL:
+      return "Invalid URL"
     }
   }
 }

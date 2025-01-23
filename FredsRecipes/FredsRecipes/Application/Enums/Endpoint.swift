@@ -12,7 +12,7 @@ public enum Endpoint: String {
   case malformed = "https://d3jbb8n5wk0qxi.cloudfront.net/recipes-malformed.json"
   case recipes = "https://d3jbb8n5wk0qxi.cloudfront.net/recipes.json"
   
-  var url: URL {
-    URL(string: rawValue)!
+  var url: URL? {
+    URL(string: rawValue)
   }
 }

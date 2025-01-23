@@ -23,16 +23,24 @@ class DefaultAPIService: APIServiceProtocol {
   }
   
   func fetchRecipes(_ endpoint: Endpoint) async throws -> [Cuisine] {
-    let request = URLRequest(url: endpoint.url)
+    guard let url = endpoint.url else {
+      throw NetworkError.invalidURL
+    }
+    
+    let request = URLRequest(url: url)
     
     let (data, response) = try await session.data(for: request)
     
     guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-      throw NetworkError.requestFailed
+      throw NetworkError.invalidResponse
     }
     
-    let decodedResponse = try decoder.decode(RecipeResponse.self, from: data)
-    
-    return decodedResponse.cuisines
+    do {
+      let decodedResponse = try decoder.decode(RecipeResponse.self, from: data)
+      
+      return decodedResponse.cuisines
+    } catch {
+      throw NetworkError.invalidData
+    }
   }
 }

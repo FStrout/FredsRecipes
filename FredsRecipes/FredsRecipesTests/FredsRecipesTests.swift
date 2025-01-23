@@ -48,7 +48,7 @@ struct APIServiceTests {
     do {
       let _ = try await service.fetchRecipes(.recipes)
     } catch let error as NetworkError {
-      #expect(error.errorDescription == "Request failed")
+      #expect(error.errorDescription == "Invalid response")
     } catch {
       assertionFailure("Failed to retrieve the expected error type.")
     }
@@ -56,7 +56,7 @@ struct APIServiceTests {
   
   func getHTTPURLResponse(_ statusCode: Int) -> HTTPURLResponse {
     return HTTPURLResponse(
-      url: Endpoint.recipes.url,
+      url: Endpoint.recipes.url!,
       statusCode: statusCode,
       httpVersion: nil,
       headerFields: nil
