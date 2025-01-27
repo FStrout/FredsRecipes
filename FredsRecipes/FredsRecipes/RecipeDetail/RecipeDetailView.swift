@@ -35,7 +35,7 @@ struct RecipeDetailView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .clipShape(Circle())
-                .frame(width: 300, height: 300)
+                .frame(width: .largeImageSize, height: .largeImageSize)
             case .failure:
               Image(systemName: "photo.badge.exclamationmark")
                 .resizable()
@@ -75,15 +75,15 @@ struct RecipeDetailView: View {
   ) -> some View {
     VStack(alignment: .leading) {
       Text(title)
-        .font(.system(size: 12))
+        .font(.system(size: .titleFont))
       if isLink {
         Text(value)
-          .font(.system(size: 18, weight: .bold))
+          .font(.system(size: .valueFont, weight: .bold))
           .foregroundColor(.blue)
           .underline()
       } else {
         Text(value)
-          .font(.system(size: 18, weight: .bold))
+          .font(.system(size: .valueFont, weight: .bold))
       }
     }
   }

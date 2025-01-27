@@ -15,9 +15,12 @@ extension CGFloat {
   static let buttonHeight: CGFloat = 32
   static let buttonStrokeLineWidth: CGFloat = 2
   static let buttonWidth: CGFloat = 100
+  static let endpointButtonHeight: CGFloat = 80
   static let iconButtonSize: CGFloat = 24
   static let imageSize: CGFloat = 120
-  static let endpointButtonHeight: CGFloat = 80
+  static let largeImageSize: CGFloat = 300
+  static let titleFont: CGFloat = 12
+  static let valueFont: CGFloat = 18
 
   static let spacing2: CGFloat = 2
   static let spacing4: CGFloat = 4
