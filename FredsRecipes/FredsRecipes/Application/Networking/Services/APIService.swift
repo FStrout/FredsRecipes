@@ -11,6 +11,8 @@ protocol APIServiceProtocol {
   func fetchRecipes(_ endpoint: Endpoint) async throws -> [Cuisine]
 }
 
+/// Default implementation of the `APIServiceProtocol`.
+///
 class DefaultAPIService: APIServiceProtocol {
   
   let session: URLSession
@@ -31,7 +33,8 @@ class DefaultAPIService: APIServiceProtocol {
     
     let (data, response) = try await session.data(for: request)
     
-    guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+    guard let httpResponse = response as? HTTPURLResponse,
+    httpResponse.statusCode == 200 else {
       throw NetworkError.invalidResponse
     }
     

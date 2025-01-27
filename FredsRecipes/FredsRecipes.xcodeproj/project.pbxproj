@@ -23,39 +23,44 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F341A34C2D3EF96800E0B153 /* Exceptions for "FredsRecipesTests" folder in "FredsRecipes" target */ = {
+		F35B49052D47CDA200D11983 /* Exceptions for "FredsRecipes" folder in "FredsRecipesTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				FredsRecipesTests.swift,
-				MockAPIService.swift,
-				MockURLProtocol.swift,
-			);
-			target = F31BD6E32D3989F000FE2ECD /* FredsRecipes */;
-		};
-		F341A34D2D3EF96800E0B153 /* Exceptions for "FredsRecipesTests" folder in "FredsRecipesTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				FredsRecipesTests.swift,
-				MockAPIService.swift,
-				MockURLProtocol.swift,
+				Application/Enums/NetworkErrorTests.swift,
+				Application/Networking/MockedResources/MockAPIService.swift,
+				Application/Networking/MockedResources/MockApplicationService.swift,
+				Application/Networking/MockedResources/MockURLProtocol.swift,
+				Application/Networking/Services/APIServiceTests.swift,
+				RecipeDetail/RecipeDetailViewModelTesting.swift,
+				RecipeList/RecipeListViewModelTests.swift,
+				RecipeTile/RecipeTileViewModelTests.swift,
 			);
 			target = F31BD6F32D3989F200FE2ECD /* FredsRecipesTests */;
+		};
+		F35B49062D47CDDD00D11983 /* Exceptions for "FredsRecipes" folder in "FredsRecipes" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Application/Enums/NetworkErrorTests.swift,
+				Application/Networking/MockedResources/MockAPIService.swift,
+				Application/Networking/MockedResources/MockApplicationService.swift,
+				Application/Networking/MockedResources/MockURLProtocol.swift,
+				Application/Networking/Services/APIServiceTests.swift,
+				RecipeDetail/RecipeDetailViewModelTesting.swift,
+				RecipeList/RecipeListViewModelTests.swift,
+				RecipeTile/RecipeTileViewModelTests.swift,
+			);
+			target = F31BD6E32D3989F000FE2ECD /* FredsRecipes */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F31BD6E62D3989F000FE2ECD /* FredsRecipes */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FredsRecipes;
-			sourceTree = "<group>";
-		};
-		F341A3482D3EF96400E0B153 /* FredsRecipesTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				F341A34C2D3EF96800E0B153 /* Exceptions for "FredsRecipesTests" folder in "FredsRecipes" target */,
-				F341A34D2D3EF96800E0B153 /* Exceptions for "FredsRecipesTests" folder in "FredsRecipesTests" target */,
+				F35B49062D47CDDD00D11983 /* Exceptions for "FredsRecipes" folder in "FredsRecipes" target */,
+				F35B49052D47CDA200D11983 /* Exceptions for "FredsRecipes" folder in "FredsRecipesTests" target */,
 			);
-			path = FredsRecipesTests;
+			path = FredsRecipes;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -83,7 +88,6 @@
 			children = (
 				F3B32BCE2D3EAA2E0064F861 /* FredsRecipes.xctestplan */,
 				F31BD6E62D3989F000FE2ECD /* FredsRecipes */,
-				F341A3482D3EF96400E0B153 /* FredsRecipesTests */,
 				F31BD6E52D3989F000FE2ECD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,7 +118,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				F31BD6E62D3989F000FE2ECD /* FredsRecipes */,
-				F341A3482D3EF96400E0B153 /* FredsRecipesTests */,
 			);
 			name = FredsRecipes;
 			packageProductDependencies = (
@@ -284,6 +287,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -340,6 +344,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

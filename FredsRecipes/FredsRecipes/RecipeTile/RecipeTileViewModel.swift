@@ -9,30 +9,40 @@ import SwiftUI
 
 class RecipeTileViewModel: ObservableObject {
   
-  @Published var hasSource: Bool = false
-  @Published var hasYoutube: Bool = false
   @Published var name: String = .empty
+  @Binding var selectedRecipe: Recipe?
+  var linkOpened: Bool = false
   
   let recipe: Recipe
   
-  init(recipe: Recipe) {
+  let applicationService: ApplicationServiceProtocol
+  
+  init(
+    recipe: Recipe,
+    selectedRecipe: Binding<Recipe?>,
+    applicationService: ApplicationServiceProtocol
+  ) {
     self.recipe = recipe
     self.name = recipe.name
-    self.hasSource = recipe.sourceUrl != nil
-    self.hasYoutube = recipe.youtubeUrl != nil
+    self._selectedRecipe = selectedRecipe
+    self.applicationService = applicationService
   }
   
   // View Actions
   
-  func openWebSite(_ webSite: String?) {
-    guard let webSite, let webSiteUrl = URL(string: webSite) else { return }
-    
-    UIApplication.shared.open(webSiteUrl)
+  func openURL(_ urlString: String) {
+    Logger.d("Open URL: \(urlString)")
+    Task {
+      do {
+        linkOpened = try await applicationService.open(urlString)
+      } catch {
+        Logger.e("Error opening URL: \(error)")
+      }
+    }
   }
   
-  func openVideo(_ video: String?) {
-    guard let video, let videoUrl = URL(string: video) else { return }
-    
-    UIApplication.shared.open(videoUrl)
+  func selectRecipe() {
+    Logger.d("Selected \(recipe.name)")
+    selectedRecipe = recipe
   }
 }

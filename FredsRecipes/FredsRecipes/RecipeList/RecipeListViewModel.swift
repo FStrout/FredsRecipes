@@ -9,8 +9,8 @@ import SwiftUI
 
 final class RecipeListViewModel: ObservableObject {
   
-  @Published var displayEndpointButtons: Bool = false
   @Published var cuisines: [Cuisine] = []
+  @Published var displayEndpointButtons: Bool = false
   @Published var viewStatus: ViewStatus = .loading
   
   var endpoint: Endpoint = .recipes
@@ -33,7 +33,7 @@ final class RecipeListViewModel: ObservableObject {
       await loadCuisines()
     }
   }
-  
+
   func toggleEndpointButtons() {
     withAnimation {
       self.displayEndpointButtons.toggle()

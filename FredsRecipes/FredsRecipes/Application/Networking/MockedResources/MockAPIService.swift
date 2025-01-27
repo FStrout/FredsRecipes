@@ -20,7 +20,11 @@ class MockAPIService: APIServiceProtocol {
     case .malformed:
       throw NetworkError.invalidData
     case .recipes:
-      let response = Bundle.main.decode(RecipeResponse.self, from: "MockRecipes.json", keyDecodingStrategy: .convertFromSnakeCase)
+      let response = Bundle.main.decode(
+        RecipeResponse.self,
+        from: "MockRecipes.json",
+        keyDecodingStrategy: .convertFromSnakeCase
+      )
       return response?.cuisines ?? [Cuisine]()
     }
   }

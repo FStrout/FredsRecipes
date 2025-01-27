@@ -10,8 +10,12 @@ import SwiftUI
 struct RecipeTileView: View {
   @ObservedObject var viewModel: RecipeTileViewModel
   
-  init(recipe: Recipe) {
-    self.viewModel = RecipeTileViewModel(recipe: recipe)
+  init(recipe: Recipe, selectedRecipe: Binding<Recipe?>) {
+    self.viewModel = RecipeTileViewModel(
+      recipe: recipe,
+      selectedRecipe: selectedRecipe,
+      applicationService: DefaultApplicationService()
+    )
   }
   
   var body: some View {
@@ -22,7 +26,11 @@ struct RecipeTileView: View {
         .padding(.leading, .spacing8)
       HStack {
         Spacer()
-        CacheAsyncImage(url: URL(string: viewModel.recipe.photoUrlSmall)) { phase in
+        CacheAsyncImage(
+          url: URL(
+            string: viewModel.recipe.photoUrlSmall
+          )
+        ) { phase in
           switch phase {
           case .empty:
             ProgressView()
@@ -30,6 +38,7 @@ struct RecipeTileView: View {
             image
             .resizable()
             .frame(width: .imageSize, height: .imageSize)
+            .onTapGesture { viewModel.selectRecipe() }
           case .failure:
             Image(systemName: "photo.badge.exclamationmark")
               .resizable()
@@ -43,9 +52,9 @@ struct RecipeTileView: View {
         Spacer()
       }
       HStack {
-        if viewModel.hasSource {
+        if let sourceUrl = viewModel.recipe.sourceUrl {
           Button {
-            viewModel.openWebSite(viewModel.recipe.sourceUrl)
+            viewModel.openURL(sourceUrl)
           } label: {
             Image(systemName: "globe")
           }
@@ -54,9 +63,9 @@ struct RecipeTileView: View {
         
         Spacer()
         
-        if viewModel.hasYoutube {
+        if let youtube = viewModel.recipe.youtubeUrl {
           Button {
-            viewModel.openVideo(viewModel.recipe.youtubeUrl)
+            viewModel.openURL(youtube)
           } label: {
             Image(systemName: "play.rectangle.fill")
               .foregroundStyle(Color.red)
@@ -81,7 +90,7 @@ struct RecipeTileView: View {
     from: "MockRecipes.json",
     keyDecodingStrategy: .convertFromSnakeCase
   ) {
-    RecipeTileView(recipe: recipes.recipes[0])
+    RecipeTileView(recipe: recipes.recipes[0], selectedRecipe: .constant(nil))
   }
 }
 #endif

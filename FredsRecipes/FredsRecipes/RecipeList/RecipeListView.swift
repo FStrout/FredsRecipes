@@ -9,9 +9,14 @@ import SwiftUI
 
 struct RecipeListView: View {
   
+  @State var selectedRecipe: Recipe?
   @ObservedObject var viewModel: RecipeListViewModel
   
-  init(viewModel: RecipeListViewModel = RecipeListViewModel(apiService: DefaultAPIService())) {
+  init(
+    viewModel: RecipeListViewModel = RecipeListViewModel(
+      apiService: DefaultAPIService()
+    )
+  ) {
     self.viewModel = viewModel
   }
   
@@ -64,7 +69,10 @@ struct RecipeListView: View {
           Button {
             viewModel.loadContent()
           } label: {
-            EndpointButton("Recipes", isSelected: viewModel.endpoint == Endpoint.recipes)
+            EndpointButton(
+              "Recipes",
+              isSelected: viewModel.endpoint == Endpoint.recipes
+            )
           }
 
           Spacer()
@@ -72,7 +80,10 @@ struct RecipeListView: View {
           Button {
             viewModel.loadContent(endpoint: .empty)
           } label: {
-            EndpointButton("Empty", isSelected: viewModel.endpoint == Endpoint.empty)
+            EndpointButton(
+              "Empty",
+              isSelected: viewModel.endpoint == Endpoint.empty
+            )
           }
           
           Spacer()
@@ -80,7 +91,10 @@ struct RecipeListView: View {
           Button {
             viewModel.loadContent(endpoint: .malformed)
           } label: {
-            EndpointButton("Malformed", isSelected: viewModel.endpoint == Endpoint.malformed)
+            EndpointButton(
+              "Malformed",
+              isSelected: viewModel.endpoint == Endpoint.malformed
+            )
           }
         }
         .padding([.horizontal, .top], .spacing24)
@@ -89,6 +103,11 @@ struct RecipeListView: View {
       }
     }
     .background(Color.asset.primaryBackground)
+    .sheet(item: $selectedRecipe) { item in
+      RecipeDetailView(recipe: item)
+        .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.visible)
+    }
   }
   
   var errorView: some View {
@@ -125,7 +144,7 @@ struct RecipeListView: View {
           ScrollView(.horizontal) {
             LazyHStack(spacing: .spacing4) {
               ForEach(section.recipes) { recipe in
-                RecipeTileView(recipe: recipe)
+                RecipeTileView(recipe: recipe, selectedRecipe: $selectedRecipe)
               }
             }
           }
