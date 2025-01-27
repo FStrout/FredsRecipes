@@ -1,7 +1,7 @@
 # FredsRecipes
 Fred Strout's submission of the Fetch recipes new candidate exercise.
 ### Summary: Include screen shots or a video of your app highlighting its features
-I decided to organize my recipes by cuisine. Every cuisine has its own section that displays a horizontally scrolling list of the recipes that belong to it. Each recipe is displayed on a tile that contains its name, an image, a button to open the source url if there is one and a button to open the youtube channel if there is one. Tapping on the image opens a sheet view containg the same data in a different format.
+I decided to organize my recipes by cuisine. Every cuisine has its own section that displays a horizontally scrolling list of the recipes that belong to it. Each recipe is displayed on a tile that contains its name, an image, a button to open the source url if there is one and a button to open the youtube channel if there is one. Tapping on the image opens a sheet view containing the same data in a different format.
 [![Fetch Recipes by Fred](https://img.youtube.com/vi/MfA1LUeHSy8/maxresdefault.jpg)](https://youtu.be/MfA1LUeHSy8)
 
 ### Focus Areas: What specific areas of the project did you prioritize? Why did you choose to focus on these areas?
